@@ -11,7 +11,7 @@ from ag_implement import use_model, summarize_regrmodels, Keras_MLP as mlp
 # Calls are interchangable for Keras_MLP, TF_MLP, SKL_MLP, just swap the model
 
 results=[]
-metrics,y_testpred,y_trainpred = use_model(mlp(lr=0.0025, epochs=100, hlay=[20,20,20], alpha=0.),
+metrics,y_testpred,y_trainpred = use_model(mlp(lr=0.0025, epochs=100, hlay=[20,20,20], alpha=1e3),
                                             X_train, y_train, X_test, y_test)
 results.append(metrics)
 
