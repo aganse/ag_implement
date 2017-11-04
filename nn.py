@@ -1,7 +1,10 @@
 """
-Implementation of Tensorflow neural net for regression, in SKL-callable template.
-Based on Ng's course/code so I totally understand what's going on in this code.
+Three implementations of neural net MLPs for regression, in SKL-style template:
+Keras_MLP (a wrapping of Keras' Sequential class forming an MLP)
+TF_MLP (adapted from some Ng class code implementing TensorFlow directly)
+SKL_MLP (just a wrapping of SKL's MLPRegressor)
 """
+
 import math
 import numpy as np
 import matplotlib.pyplot as plt

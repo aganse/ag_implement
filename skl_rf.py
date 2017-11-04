@@ -2,7 +2,7 @@
 '''
 Run scikit-learn random forest classifier on a features/response dataframe.
 
-The implementRF() function is the whole module; encapsulates typical scikit-learn
+The skl_rf() function is the whole module; encapsulates typical scikit-learn
 formulation to run RandomForestClassifier on a Pandas dataframe containing both
 feature columns and a binary `response` column.  Outputs scores and optional
 plots.
