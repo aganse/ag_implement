@@ -273,7 +273,7 @@ class TF_MLP(BaseEstimator):
         #X = check_array(X)
         return predict_fn(X, self.parameters)
 
-    def get_params(self):
+    def get_hyperparams(self):
         return (self.lr,self.epochs,self.hlay,self.alpha)
 
 
@@ -374,7 +374,7 @@ class Keras_MLP(Sequential):
     #     #X = check_array(X)
     #     return self.predict(x_test)  #, batch_size=128)
 
-    def get_params(self):
+    def get_hyperparams(self):
         return (self.lr,self.epochs,self.hlay,self.alpha)
 
 
