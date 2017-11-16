@@ -39,7 +39,7 @@ def use_inv_model(model, y_meas, m_meas):
     soln,cost,misfit,modelnorm,normdm,mse_test = model.fit(y_meas,m_meas)  # y=sal, m=Efield
     Tend = timer()
     p = model.get_hyperparams()
-    results = (modname, cost[-1], normdm, mse_test, np.nan, np.nan, p[1],np.nan, p[3])
+    results = (modname, cost, normdm, mse_test, np.nan, np.nan, p[1],np.nan, p[3])
     #print(results)
     #print('%s:  loss=%5.3f  normdm=%5.3f  testMSE=%5.3f  misfit=%5.3f  modelnorm=%6.4f  epochs=%d  hlay=%s  a=%g' % results)
     print('Elapsed time (seconds): %-12.6f' % (Tend - Tstart))
