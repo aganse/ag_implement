@@ -29,21 +29,22 @@ def use_ml_model(model, X_train, y_train, X_test, y_test, notes=''):
     return results, y_testpred, y_trainpred
 
 
-def use_inv_model(model, y_meas, m_meas):
+def use_inv_model(model, y_meas, m_meas, verbose=True):
     # wrapper function to apply a specified inversion model to the dataset
     # and return solution as well as list of performance metrics
     Tstart = timer()
     modname = model.__class__.__name__
     y_meas = y_meas.reshape(len(y_meas),1)
     m_meas = m_meas.reshape(len(m_meas),1)
-    soln,cost,misfit,modelnorm,normdm,mse_test = model.fit(y_meas,m_meas)  # y=sal, m=Efield
+    soln,cost,misfit,modelnorm,normdm,mse_test,ypred,ymeas,J = model.fit(y_meas,m_meas)  # y=sal, m=Efield
     Tend = timer()
     p = model.get_hyperparams()
-    results = (modname, cost, normdm, mse_test, np.nan, np.nan, p[1],np.nan, p[3])
+    results = (modname, cost, normdm, mse_test, misfit, np.nan, p[1],np.nan, p[3],ypred,ymeas,J)
     #print(results)
     #print('%s:  loss=%5.3f  normdm=%5.3f  testMSE=%5.3f  misfit=%5.3f  modelnorm=%6.4f  epochs=%d  hlay=%s  a=%g' % results)
-    print('Elapsed time (seconds): %-12.6f' % (Tend - Tstart))
-    return results, soln
+    if verbose:
+        print('Elapsed time (seconds): %-12.6f' % (Tend - Tstart))
+    return results, soln, (Tend - Tstart)
 
 
 def summarize_models(results,type='regr'):
